@@ -1,0 +1,306 @@
+/* ===========================
+   Blood Strike Overlay Theme
+   =========================== */
+
+:root{
+    --bg:#0b0b0f;
+    --panel:rgba(20,20,24,.72);
+    --border:rgba(255,60,60,.35);
+    --red:#ff2d2d;
+    --red-glow:#ff4d4d;
+    --white:#ffffff;
+    --text:#d7d7d7;
+    --shadow:0 0 20px rgba(255,45,45,.35);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:transparent;
+    color:var(--white);
+}
+
+/* Background Overlay */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at top right,
+        rgba(255,0,0,.08),
+        transparent 40%),
+        radial-gradient(circle at bottom left,
+        rgba(255,0,0,.05),
+        transparent 45%);
+    pointer-events:none;
+}
+
+/* HUD Container */
+
+#overlay{
+    position:absolute;
+    inset:0;
+    padding:30px;
+}
+
+/* Main Panel */
+
+.panel{
+    width:350px;
+    background:var(--panel);
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    box-shadow:
+        0 0 35px rgba(255,40,40,.15),
+        inset 0 0 12px rgba(255,255,255,.02);
+
+    padding:22px;
+
+    animation:fadeIn .8s ease;
+}
+
+/* Title */
+
+.title{
+    font-size:26px;
+    font-weight:700;
+
+    color:var(--white);
+
+    letter-spacing:1px;
+
+    margin-bottom:18px;
+
+    text-shadow:
+        0 0 10px var(--red),
+        0 0 20px var(--red);
+}
+
+/* Labels */
+
+.label{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:#9a9a9a;
+    margin-bottom:6px;
+}
+
+/* Values */
+
+.value{
+    font-size:30px;
+    font-weight:700;
+    color:white;
+    text-shadow:0 0 12px rgba(255,40,40,.5);
+}
+
+/* Cards */
+
+.card{
+
+    margin-top:18px;
+
+    padding:15px;
+
+    background:rgba(255,255,255,.03);
+
+    border-left:3px solid var(--red);
+
+    border-radius:10px;
+
+    transition:.25s;
+}
+
+.card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--shadow);
+
+    border-left-color:#ff6666;
+}
+
+/* Progress */
+
+.progress{
+
+    margin-top:10px;
+
+    width:100%;
+
+    height:8px;
+
+    border-radius:20px;
+
+    background:#222;
+
+    overflow:hidden;
+}
+
+.progress span{
+
+    display:block;
+
+    height:100%;
+
+    width:65%;
+
+    background:linear-gradient(
+        90deg,
+        #b30000,
+        #ff2d2d,
+        #ff8888);
+
+    box-shadow:0 0 15px var(--red);
+
+    animation:pulse 2s infinite;
+}
+
+/* Divider */
+
+.divider{
+
+    margin:18px 0;
+
+    height:1px;
+
+    background:linear-gradient(
+        to right,
+        transparent,
+        rgba(255,0,0,.5),
+        transparent);
+}
+
+/* Footer */
+
+.footer{
+
+    margin-top:18px;
+
+    text-align:center;
+
+    color:#888;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+}
+
+/* Small Glow Dot */
+
+.dot{
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:var(--red);
+
+    box-shadow:
+        0 0 10px var(--red),
+        0 0 20px var(--red);
+
+    animation:pulse 1.8s infinite;
+}
+
+/* Animations */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes pulse{
+
+    0%{
+        opacity:.7;
+        box-shadow:0 0 5px var(--red);
+    }
+
+    50%{
+        opacity:1;
+        box-shadow:
+            0 0 18px var(--red),
+            0 0 28px var(--red);
+    }
+
+    100%{
+        opacity:.7;
+        box-shadow:0 0 5px var(--red);
+    }
+
+}
+
+/* Floating Effect */
+
+.float{
+
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+/* Responsive */
+
+@media(max-width:700px){
+
+    .panel{
+
+        width:100%;
+
+    }
+
+    .title{
+
+        font-size:22px;
+
+    }
+
+    .value{
+
+        font-size:24px;
+
+    }
+
+}
