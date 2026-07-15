@@ -1,52 +1,28 @@
+async function loadData() {
+    try {
+        const response = await fetch("data.json?t=" + Date.now());
+        const data = await response.json();
 
-// ==========================
-// Blood Strike Overlay
-// Sprint 1
-// ==========================
+        document.getElementById("rank").textContent = data.rank;
+        document.getElementById("rp").textContent = data.rp;
+        document.getElementById("wins").textContent = data.wins;
+        document.getElementById("kills").textContent = data.kills;
+        document.getElementById("deaths").textContent = data.deaths;
+        document.getElementById("winStreak").textContent = data.winStreak;
 
-// Demo data
-const overlayData = {
-    player: "Zaheer",
-    kills: 12,
-    wins: 48,
-    kd: 6.38,
-    viewers: 127
-};
+        const kd =
+            data.deaths === 0
+                ? data.kills.toFixed(2)
+                : (data.kills / data.deaths).toFixed(2);
 
-// Wait until page loads
-document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("kd").textContent = kd;
 
-    updateOverlay();
-
-    // Demo animation
-    setInterval(() => {
-
-        overlayData.kills++;
-
-        overlayData.viewers += Math.floor(Math.random() * 3);
-
-        updateOverlay();
-
-    }, 5000);
-
-});
-
-function updateOverlay() {
-
-    setText("playerName", overlayData.player);
-    setText("kills", overlayData.kills);
-    setText("wins", overlayData.wins);
-    setText("kd", overlayData.kd.toFixed(2));
-    setText("viewers", overlayData.viewers);
-
-}
-
-function setText(id, value) {
-
-    const element = document.getElementById(id);
-
-    if (element) {
-        element.textContent = value;
+    } catch (err) {
+        console.error("Kunne ikke indlæse data.json", err);
     }
-
 }
+
+loadData();
+
+// Opdater hvert sekund
+setInterval(loadData, 1000);
