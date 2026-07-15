@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="da">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StrikeOverlay</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,24 +18,39 @@
     </div>
 
     <div class="rank" id="rank">
-    LOADING
-</div>
+        LOADING...
+    </div>
 
     <div class="stats">
 
-        <div>
-            ⭐ RP
+        <div class="stat">
+            <span class="label">⭐ RP</span>
             <span id="rp">0</span>
         </div>
 
-        <div>
-            🔥 WINS
-            <span id="wins">0</span>>
+        <div class="stat">
+            <span class="label">👑 Wins</span>
+            <span id="wins">0</span>
         </div>
 
-        <div>
-            💀 K/D
-            <span id="K/D">0</span>
+        <div class="stat">
+            <span class="label">🎯 Kills</span>
+            <span id="kills">0</span>
+        </div>
+
+        <div class="stat">
+            <span class="label">💀 Deaths</span>
+            <span id="deaths">0</span>
+        </div>
+
+        <div class="stat">
+            <span class="label">📈 K/D</span>
+            <span id="kd">0.00</span>
+        </div>
+
+        <div class="stat">
+            <span class="label">🔥 Win Streak</span>
+            <span id="winStreak">0</span>
         </div>
 
     </div>
